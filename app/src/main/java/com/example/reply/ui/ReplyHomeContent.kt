@@ -34,6 +34,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -44,6 +46,8 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.reply.R
 import com.example.reply.data.Email
 import com.example.reply.data.local.LocalAccountsDataProvider
@@ -245,4 +249,16 @@ private fun ReplyHomeTopBar(modifier: Modifier = Modifier) {
                 .size(dimensionResource(R.dimen.topbar_profile_image_size))
         )
     }
+}
+
+@Preview
+@Composable
+fun ReplyListOnlyContentPreview() {
+    val viewModel: ReplyViewModel = viewModel()
+    val replyUiState by viewModel.uiState.collectAsState()
+    ReplyListOnlyContent(
+        replyUiState = replyUiState,
+        onEmailCardPressed = {}
+    )
+
 }
