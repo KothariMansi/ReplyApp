@@ -89,7 +89,8 @@ fun ReplyListOnlyContent(
 fun ReplyListAndDetailContent(
     replyUiState: ReplyUiState,
     onEmailCardPressed: (Email) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    isFullScreen: Boolean
 ) {
     val emails = replyUiState.currentMailboxEmails
     Row(modifier = modifier) {
@@ -119,7 +120,7 @@ fun ReplyListAndDetailContent(
             replyUiState = replyUiState,
             onBackPressed = {activity.finish()},
             modifier = Modifier.weight(1f),
-            isFullScreen = true
+            isFullScreen = isFullScreen
         )
     }
 }
