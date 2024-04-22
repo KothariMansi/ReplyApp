@@ -183,7 +183,7 @@ private fun ReplyAppContent(
                     ReplyListAndDetailContent(
                         replyUiState = replyUiState,
                         onEmailCardPressed = onEmailCardPressed,
-                        modifier = Modifier,
+                        modifier = Modifier.testTag(stringResource(R.string.details_screen)),
                         isFullScreen = true
                     )
 
